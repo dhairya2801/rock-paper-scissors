@@ -1,0 +1,19 @@
+#container {
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    background: rgb(166, 176, 255);
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+    border-radius: 6px;
+}
