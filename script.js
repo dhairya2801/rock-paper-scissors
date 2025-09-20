@@ -1,5 +1,6 @@
 let hScore = 0;
 let cScore = 0;
+const winner = document.querySelector('.winner');
 
 const buttons = document.querySelectorAll('button');
 let hChoice;
@@ -16,9 +17,9 @@ buttons.forEach((btn) => {
                 hChoice = 'scissor';
                 break;
         }
+        winner.textContent = '';
         const humanSelection = document.querySelector('.humanSelection');
-        humanSelection.textContent = `You selected: ${hChoice}`;
-
+        humanSelection.textContent = `You selected: ${hChoice[0].toUpperCase() + hChoice.slice(1)}`;
         playRound(hChoice);
     })
 })
@@ -31,7 +32,7 @@ function getComputerChoice() {
         out = "rock";
     }
     else if (choice >= 7) {
-        out = "scissors";
+        out = "scissor";
     }
     else {
         out = "paper";
@@ -42,7 +43,7 @@ function getComputerChoice() {
 function playRound(human) {
     let computer = getComputerChoice();
     const computerSelection = document.querySelector('.computerSelection');
-    computerSelection.textContent = `Computer selected: ${computer}`;
+    computerSelection.textContent = `Computer selected: ${computer[0].toUpperCase() + computer.slice(1)}`;
 
     if (human === computer) {
         return console.log('tie');
@@ -80,4 +81,9 @@ function playRound(human) {
 
     const score = document.querySelector('.score');
     score.textContent = `Score: You: ${hScore}, Computer: ${cScore}`;
+    if (hScore == 5 || cScore == 5) {
+        winner.textContent = (hScore == 5) ? 'You WIN!' : 'You lose, try again!';
+        hScore = 0;
+        cScore = 0;
+    }
 }
